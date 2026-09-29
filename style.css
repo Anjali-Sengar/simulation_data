@@ -1,0 +1,44 @@
+:root{--bg:#0b1220;--panel:#111a2e;--line:#22304d;--txt:#e6ecf7;--mute:#8fa0bf;
+--ok:#2ecc71;--warn:#f5a623;--bad:#ff4d4f;--trans:#4aa3ff;--acc:#38d0ff}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--txt);font:14px/1.4 "Segoe UI",system-ui,sans-serif}
+.top{display:flex;justify-content:space-between;align-items:center;padding:16px 24px;border-bottom:1px solid var(--line);background:#0e1730}
+.top h1{margin:0;font-size:20px;letter-spacing:.18em;color:var(--acc)}
+.top p{margin:2px 0 0;color:var(--mute);font-size:12px}
+.src{font-size:12px;color:var(--mute);display:flex;align-items:center;gap:8px}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--warn)}
+main{padding:20px 24px;display:grid;gap:16px;max-width:1500px;margin:auto}
+h2{margin:0 0 10px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);font-weight:600}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.card,.panel{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px}
+.card{border-top:3px solid var(--mute)}
+.big{font-size:44px;font-weight:700;line-height:1.1}.big small{font-size:16px;color:var(--mute);font-weight:400}
+.big.sm{font-size:24px;margin:6px 0 10px}
+.pill{display:inline-block;margin-top:8px;padding:3px 12px;border-radius:99px;font-weight:700;font-size:12px;letter-spacing:.1em;border:1px solid currentColor}
+.bar{height:6px;background:#1b2745;border-radius:3px;margin-top:12px;overflow:hidden}.bar div{height:100%;width:0;background:var(--mute);transition:width .3s}
+dl{display:grid;grid-template-columns:1fr auto;gap:4px 12px;margin:0}dt{color:var(--mute)}dd{margin:0;text-align:right;font-variant-numeric:tabular-nums}
+.sub{color:var(--mute);font-size:12px}.gt{margin-top:14px;padding-top:10px;border-top:1px dashed var(--line)}.gt div:last-child{font-size:15px}
+.s-ok{color:var(--ok)}.s-warn{color:var(--warn)}.s-bad{color:var(--bad)}.s-trans{color:var(--trans)}.s-na{color:var(--mute)}
+.b-ok{border-top-color:var(--ok)}.b-warn{border-top-color:var(--warn)}.b-bad{border-top-color:var(--bad)}.b-trans{border-top-color:var(--trans)}
+.sensors{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+.sensor{background:#0d1528;border:1px solid var(--line);border-left:4px solid var(--mute);border-radius:8px;padding:10px 12px}
+.sensor .n{font-size:11px;color:var(--mute);text-transform:uppercase;letter-spacing:.08em}
+.sensor .v{font-size:24px;font-weight:600;font-variant-numeric:tabular-nums}.sensor .v small{font-size:12px;color:var(--mute);font-weight:400}
+.sensor .m{font-size:11px;color:var(--mute);display:flex;justify-content:space-between;margin-top:2px}
+.state{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.state div{background:#0d1528;border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+.state span{display:block;font-size:11px;color:var(--mute);text-transform:uppercase;letter-spacing:.08em}
+.scrub{position:sticky;bottom:0;display:flex;gap:12px;align-items:center;padding:10px 24px;background:#0e1730;border-top:1px solid var(--line)}
+.scrub input{flex:1}.scrub button{background:#1b2745;color:var(--txt);border:1px solid var(--line);border-radius:6px;padding:4px 12px;cursor:pointer}
+#ts{font-variant-numeric:tabular-nums;color:var(--mute);min-width:230px;text-align:right}
+.disc{text-align:center;color:var(--mute);font-size:11px;margin:8px 0 60px}
+.head{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}.head h2{margin:0}
+select{background:#0d1528;color:var(--txt);border:1px solid var(--line);border-radius:6px;padding:4px 8px}
+.tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.tab{background:#0d1528;color:var(--mute);border:1px solid var(--line);border-radius:6px;padding:4px 12px;cursor:pointer}
+.tab.on{color:var(--txt);border-color:var(--acc);background:#13284a}
+.chartbox{position:relative;height:300px}.chartbox.small{height:130px}
+.msg{color:var(--bad);font-size:12px}
+.two{display:grid;grid-template-columns:2fr 1fr;gap:16px}.two .state{grid-template-columns:1fr}
+.legend{font-size:12px;color:var(--mute);margin-bottom:6px}.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin:0 4px 0 10px}.legend i:first-child{margin-left:0}
+@media(max-width:900px){.two{grid-template-columns:1fr}}
