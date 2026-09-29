@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UAV Engine Digital Twin</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header class="top">
+  <div>
+    <h1>UAV ENGINE DIGITAL TWIN</h1>
+    <p>Health &amp; Predictive Monitoring &middot; MALE UAV piston engine</p>
+  </div>
+  <div class="src"><span class="dot"></span><span id="srcMode">loading…</span></div>
+</header>
+
+<main>
+  <section class="cards">
+    <article class="card" id="cardHealth">
+      <h2>Engine Health</h2>
+      <div class="big"><span id="hiVal">—</span><small> / 100</small></div>
+      <div class="pill" id="hiStatus">—</div>
+      <div class="bar"><div id="hiBar"></div></div>
+    </article>
+
+    <article class="card" id="cardAnom">
+      <h2>Anomaly Status</h2>
+      <div class="big sm" id="anStatus">—</div>
+      <dl>
+        <dt>ML anomaly score</dt><dd id="mlScore">—</dd>
+        <dt>ML label</dt><dd id="mlLabel">—</dd>
+        <dt>Affected sensors</dt><dd id="nAff">—</dd>
+        <dt>Primary sensor</dt><dd id="topSensor">—</dd>
+      </dl>
+    </article>
+
+    <article class="card" id="cardFault">
+      <h2>Fault Diagnosis</h2>
+      <div class="sub">Predicted fault (model output)</div>
+      <div class="big sm" id="predFault">—</div>
+      <div class="sub" id="predConf">Confidence —</div>
+      <div class="gt">
+        <div class="sub">Ground truth (simulator label, not a prediction)</div>
+        <div id="gtFault">—</div>
+      </div>
+    </article>
+  </section>
+
+  <section class="panel">
+    <h2>Sensor Monitoring</h2>
+    <div class="sensors" id="sensorGrid"></div>
+  </section>
+
+  <section class="panel">
+    <div class="head"><h2>Sensor Trend</h2>
+      <select id="trendRange"><option value="all">Full flight</option><option value="600">&plusmn;10 min around cursor</option><option value="120">&plusmn;2 min around cursor</option></select></div>
+    <div class="tabs" id="trendTabs"></div>
+    <div class="chartbox"><canvas id="trendCanvas"></canvas></div><div class="msg" id="trendMsg"></div>
+  </section>
+
+  <section class="panel">
+    <div class="head"><h2>Digital Twin vs Actual</h2>
+      <select id="twinRange"><option value="all">Full flight</option><option value="600">&plusmn;10 min around cursor</option><option value="120" selected>&plusmn;2 min around cursor</option></select></div>
+    <div class="tabs" id="twinTabs"></div>
+    <div class="chartbox"><canvas id="twinCanvas"></canvas></div>
+    <div class="sub">Residual = actual &minus; Digital Twin expected</div>
+    <div class="chartbox small"><canvas id="residCanvas"></canvas></div><div class="msg" id="twinMsg"></div>
+  </section>
+
+  <section class="two">
+    <div class="panel">
+      <div class="head"><h2>Health Trend</h2>
+        <select id="healthRange"><option value="all">Full flight</option><option value="600">&plusmn;10 min around cursor</option><option value="120">&plusmn;2 min around cursor</option></select></div>
+      <div class="legend"><i style="background:#2ecc71"></i>Healthy <i style="background:#f5a623"></i>Warning <i style="background:#ff4d4f"></i>Alert <i style="background:#4aa3ff"></i>Transient</div>
+      <div class="chartbox"><canvas id="healthCanvas"></canvas></div><div class="msg" id="healthMsg"></div>
+    </div>
+    <div class="panel">
+      <h2>Current Engine State</h2>
+      <div class="state" id="stateGrid"></div>
+    </div>
+  </section>
+</main>
+
+<footer class="scrub">
+  <button id="btnLatest" title="Jump to last row">Last</button>
+  <input type="range" id="slider" min="0" max="0" value="0">
+  <span id="ts">—</span>
+</footer>
+<p class="disc">Prototype for an engineering project &mdash; simulated telemetry, not a certified diagnostic system.</p>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="{{ url_for('static', filename='dashboard.js') }}"></script>
+<script src="{{ url_for('static', filename='charts.js') }}"></script>
+</body>
+</html>
